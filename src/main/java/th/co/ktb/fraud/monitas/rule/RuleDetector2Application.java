@@ -55,13 +55,13 @@ public class RuleDetector2Application implements CommandLineRunner{
 		
 		logger.debug("before run rule detector");
 		
-		for(int i=25;i<=31;i++) {
+		for(int i=21;i<=21;i++) {
 			
 			
 			Calendar calendar = Calendar.getInstance();
 			
 			calendar.set(Calendar.DAY_OF_MONTH, i);
-			calendar.set(Calendar.MONTH, 7);
+			calendar.set(Calendar.MONTH, 11);
 			calendar.set(Calendar.YEAR, 2021);
 			
 			calendar.set(Calendar.HOUR_OF_DAY, 0);

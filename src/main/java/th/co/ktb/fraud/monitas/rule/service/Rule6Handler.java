@@ -125,9 +125,9 @@ public class Rule6Handler extends BaseRuleHandler{
 
 	private boolean hasChangeStatus(TellerAccountResult fraud,Date date) {
 		
-		int changeStatusCount = BeanHolder.getInstance().getDtjRepo().hasChangeStatusToActive(fraud.getAccount_number(), date);
+		Integer changeStatusCount = BeanHolder.getInstance().getDtjRepo().hasChangeStatusToActive("%"+fraud.getAccount_number(), date);
 		
-		return changeStatusCount > 0;
+		return changeStatusCount != null && changeStatusCount > 0;
 		
 	}
 

@@ -132,20 +132,24 @@ public class Rule3Handler extends BaseRuleHandler{
 		Date startDate = new Date(calendar.getTimeInMillis());
 		
 		boolean isBeforeMaturity = isBeforeMatrutiyDate(accountNumber);
-		boolean hasWithDraw = hasWithDrawWithin(accountNumber, startDate, transactionTypes);
+		boolean hasWithDraw = hasWithDrawWithin(accountNumber, startDate,date, transactionTypes);
 		
 		return isBeforeMaturity || !hasWithDraw;
 		
 	}
 
-	private boolean hasWithDrawWithin(String accountNumber,Date date,List<String> transactionTypes) {
+	private boolean hasWithDrawWithin(String accountNumber,Date date,Date transDate,List<String> transactionTypes) {
 		
 		Calendar calendar = Calendar.getInstance();
-		//calendar.setTimeInMillis(date.getTime());
+		calendar.setTimeInMillis(date.getTime());
 		calendar.add(Calendar.DATE, -1);
-		Date endDate = new Date(calendar.getTimeInMillis());
+		calendar.set(Calendar.HOUR,23);
+		calendar.set(Calendar.MINUTE,59);
+		calendar.set(Calendar.SECOND,59);
+		//Date endDate = calendar.getTime();
+		Timestamp endTime = new Timestamp(calendar.getTimeInMillis());
 		
-		long withDrawCount = BeanHolder.getInstance().getDtjRepo().countTransactionWithinDate(accountNumber, date,endDate, transactionTypes);
+		long withDrawCount = BeanHolder.getInstance().getDtjRepo().countTransactionWithinDate(accountNumber, date,endTime, transactionTypes);
 		
 		return withDrawCount>0;
 		

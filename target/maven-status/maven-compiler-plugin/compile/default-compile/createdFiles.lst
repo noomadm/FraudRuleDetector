@@ -1,0 +1,16 @@
+th\co\ktb\fraud\monitas\rule\BeanHolder.class
+th\co\ktb\fraud\monitas\rule\utils\DataUtils.class
+th\co\ktb\fraud\monitas\rule\RuleDetector2Application.class
+th\co\ktb\fraud\monitas\rule\service\RuleDetectorService.class
+th\co\ktb\fraud\monitas\rule\service\Rule3Handler.class
+th\co\ktb\fraud\monitas\rule\service\Rule6Handler.class
+th\co\ktb\fraud\monitas\rule\service\RuleConstants.class
+th\co\ktb\fraud\monitas\rule\service\Rule5Handler.class
+th\co\ktb\fraud\monitas\rule\service\Rule4Handler.class
+th\co\ktb\fraud\monitas\rule\service\Rule7Handler.class
+th\co\ktb\fraud\monitas\rule\service\BaseRuleHandler.class
+th\co\ktb\fraud\monitas\rule\service\TTSOWIDRuleHandler.class
+th\co\ktb\fraud\monitas\rule\service\TTWIDRuleHandler.class
+th\co\ktb\fraud\monitas\thread\TaskDistributorThread.class
+th\co\ktb\fraud\monitas\rule\service\Rule8Handler.class
+th\co\ktb\fraud\monitas\rule\service\RunningNumberService.class
