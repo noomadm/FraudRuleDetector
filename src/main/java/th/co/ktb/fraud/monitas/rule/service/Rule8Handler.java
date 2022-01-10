@@ -2,6 +2,7 @@ package th.co.ktb.fraud.monitas.rule.service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -15,7 +16,9 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 
 import th.co.ktb.fraud.monitas.models.Case;
+import th.co.ktb.fraud.monitas.models.CaseAdditionData;
 import th.co.ktb.fraud.monitas.models.DTJ;
+import th.co.ktb.fraud.monitas.models.DTJIds;
 import th.co.ktb.fraud.monitas.models.Rule;
 import th.co.ktb.fraud.monitas.models.RuleTransactionTypeWithinDays;
 import th.co.ktb.fraud.monitas.models.TellerAccountResult;
@@ -99,6 +102,18 @@ public class Rule8Handler extends BaseRuleHandler{
 				DTJ tran = transactions.get(transactions.size()-1);
 				this.branchCode = tran.getBranch_code();
 				this.transCode = tran.getTrans_trace_number();
+				this.dtjTran = tran;	
+											
+				DTJIds dtjId = new DTJIds();
+				dtjId.setAccount_number(dtjTran.getAccount_number());
+				dtjId.setDate_time(dtjTran.getDate_time());
+				dtjId.setTrans_date(dtjTran.getTrans_date());
+				dtjId.setTrans_sequence_no(dtjTran.getTrans_sequence_no());
+				
+				fraud.setDtjId(dtjId);
+				
+				caseList.add(fraud);
+				transactionMap.put(fraud, transactions);
 				
 			}
 			
@@ -210,6 +225,13 @@ public class Rule8Handler extends BaseRuleHandler{
 		fraudCase.setRule_id(rule.getId());
 		fraudCase.setCif_branch(branchCode);
 		fraudCase.setTrxn_code(transCode);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		CaseAdditionData caseData = new CaseAdditionData();
+		caseData.setDtjId(fraud.getDtjId());
+		caseData.setTranDate(sdf.format(fraud.getDtjId().getTrans_date()));
+		
+		fraudCase.setJson_data(caseData);
 		
 		return fraudCase;
 		

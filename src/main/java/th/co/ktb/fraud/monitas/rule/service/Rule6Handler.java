@@ -2,6 +2,7 @@ package th.co.ktb.fraud.monitas.rule.service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -233,9 +234,10 @@ public class Rule6Handler extends BaseRuleHandler{
 		fraudCase.setCif_branch(branchCode);
 		fraudCase.setTrxn_code(transCode);
 		
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		CaseAdditionData caseData = new CaseAdditionData();
 		caseData.setDtjId(fraud.getDtjId());
+		caseData.setTranDate(sdf.format(fraud.getDtjId().getTrans_date()));
 		
 		fraudCase.setJson_data(caseData);
 		
