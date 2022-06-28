@@ -110,8 +110,8 @@ public class Rule3Handler extends BaseRuleHandler{
 			
 			if(isFraud) {
 				
-				caseList.add(fraud);
-				transactionMap.put(fraud, transactions);
+				//caseList.add(fraud);
+				//transactionMap.put(fraud, transactions);
 				
 				this.fraudRecords = transactions;
 				

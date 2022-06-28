@@ -55,7 +55,7 @@ public class RuleDetector2Application implements CommandLineRunner{
 		
 		logger.debug("before run rule detector");
 		
-		for(int i=21;i<=21;i++) {
+		/*for(int i=21;i<=21;i++) {
 			
 			
 			Calendar calendar = Calendar.getInstance();
@@ -79,19 +79,20 @@ public class RuleDetector2Application implements CommandLineRunner{
 			
 			detectorService.run();
 		
-		}
+		}*/
 		
-		/*RuleDetectorService detectorService = new RuleDetectorService();
+		RuleDetectorService detectorService = new RuleDetectorService();
 		TaskDistributorThread taskDist = new TaskDistributorThread(ruleRepo,tdisRepo,caseRepo);
 		Thread thread = new Thread(taskDist, "Task Distribute");
 		thread.start();
 		
 		while(true) {
 			
-			//detectorService.run();
+			detectorService.run();
 			
 			Thread.sleep(1000);
-		}*/
+			
+		}
 		
 	}
 

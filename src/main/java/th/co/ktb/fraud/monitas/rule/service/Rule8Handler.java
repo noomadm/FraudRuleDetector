@@ -94,8 +94,7 @@ public class Rule8Handler extends BaseRuleHandler{
 			logger.debug("is fraud {}",isFraud);
 			
 			if(isFraud) {
-				caseList.add(fraud);
-				transactionMap.put(fraud, transactions);
+				
 				
 				this.fraudRecords = transactions;
 				
@@ -114,7 +113,6 @@ public class Rule8Handler extends BaseRuleHandler{
 				
 				caseList.add(fraud);
 				transactionMap.put(fraud, transactions);
-				
 			}
 			
 		}
@@ -158,6 +156,10 @@ public class Rule8Handler extends BaseRuleHandler{
 	protected void createNotification() {
 	
 		logger.debug("create notification");
+		
+		if(caseList.size() == 0) {
+			return;
+		}
 		
 		for(TellerAccountResult fraud : caseList) {
 			
